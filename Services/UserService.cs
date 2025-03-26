@@ -9,15 +9,34 @@ namespace Services
         UserRepository userRepository = new UserRepository();
         public User Register(User user)
         {
-            return userRepository.Register(user);
+            //return userRepository.Register(user);
+
+            List<User> users = new List<User>();
+            User userfound = users.FirstOrDefault(u => u.userName == user.userName);
+            if (userfound == null)
+            {
+               return userRepository.Register(user);
+            }
+             return null;
         }
-        public User Login(User user)
+        public User Login(string userName,string password)
         {
-            return userRepository.Login(user);
+        
+            User userfound =userRepository.Login(userName) ;
+            if (userfound == null)
+            {
+                return null;
+            }
+            if(userfound.password == password)
+            {
+                return userfound;
+            }
+            return null;
         }
-        public void UpDate(User user,int id)
+        public User UpDate(User user,int id)
         {
-            userRepository.UpDate(user, id);
+
+            return userRepository.UpDate(user, id);
         }
 
     }

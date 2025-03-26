@@ -59,11 +59,11 @@ namespace MyShopWebApi.Controllers
             //    return StatusCode(500, "Error writing user to file: " + ex.Message);
             //}
             User u = userService.Register(user);
-            //if(u)
-            //{
+            if (u!=null)
+            {
                 return Ok(u);
-            //}
-            //return StatusCode(400);
+            }
+            return StatusCode(400,"try Again");
 
 
         }
@@ -100,12 +100,12 @@ namespace MyShopWebApi.Controllers
             //{
             //    return StatusCode(500, "Error writing user to file: " + ex.Message);
             //}
-            User u = userService.Login(user);
-            //if (u)
-            //{
+            User u = userService.Login(user.userName,user.password);
+            if (u!=null)
+            {
                 return Ok(u);
-            //}
-            //return StatusCode(400);
+            }
+            return StatusCode(400,"try again");
 
         }
 
