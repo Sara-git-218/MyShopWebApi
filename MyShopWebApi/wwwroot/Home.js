@@ -10,10 +10,10 @@ Register = async () => {
         return;
     }
     const user = {
-        user_name: userName,
+        userName: userName,
         password: password,
-        first_name: firstName,
-        last_name: lastName
+        firstName: firstName,
+        lastName: lastName
     }
 
     try {
@@ -66,10 +66,10 @@ Login = async () => {
     }
 
     const user = {
-        user_name: userName,
+        userName: userName,
         password: password,
-        first_name: "",
-        last_name: ""
+        firstName: "",
+        lastName: ""
 
     }
     try {
@@ -81,8 +81,12 @@ Login = async () => {
             },
             body: JSON.stringify(user)
         });
+        console.log(responsePost);
+        alert(responsePost)
+        userDatails = await responsePost.json()
         if (responsePost.ok) {
-            alert("Login successfully")
+            alert("Login successfully");
+            console.log(userDatails);
         }
 
         else {
@@ -108,11 +112,38 @@ Login = async () => {
     catch (e) {
         alert("Error: " + e.message);
     }
-
+    
+    localStorage.setItem("UserId", userDatails.userId);
 }
 
 
+const UpDate = async () => {
+    const firstname = document.getElementById("first_name_u").value;
+    const lastname = document.getElementById("last_name_u").value;
+    const password = document.getElementById("password_u").value;
+    const username = document.getElementById("user_name_u").value;
+    const user = {
+        userName: username,
+        password: password,
+        firstName: firstname,
+        lastName: lastname
+    }
+    const id = localStorage.getItem("UserId")
+    alert(id)
+    const responsePost = await fetch(`api/Users/${id}`, {
+        method: 'Put',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
 
+    });
+
+    if (responsePost.ok) {
+        alert("updated")
+    }
+
+}
 
 
 
