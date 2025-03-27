@@ -11,7 +11,7 @@ namespace Services
         {
             //return userRepository.Register(user);
 
-            List<User> users = new List<User>();
+            List<User> users = userRepository.GetUsers();
             User userfound = users.FirstOrDefault(u => u.userName == user.userName);
             if (userfound == null)
             {
