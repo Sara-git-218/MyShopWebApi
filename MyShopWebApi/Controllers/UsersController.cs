@@ -35,29 +35,6 @@ namespace MyShopWebApi.Controllers
         public ActionResult<User> Register([FromBody] User user)
         {
 
-            //if (user == null)
-            //{
-            //    return StatusCode(400, "username  and password are required");
-            //}
-            //try
-            //{
-            //    int numberOfUsers = System.IO.File.Exists("users.txt") ? System.IO.File.ReadLines("users.txt").Count() : 0;
-            //    user.userId = numberOfUsers + 1;
-            //    if (System.IO.File.Exists("users.txt"))
-            //    {
-            //        var existingUsers = System.IO.File.ReadLines("users.txt").Select(line => JsonSerializer.Deserialize<User>(line)).ToList();
-            //        if (existingUsers.Any(u => u.userName == user.userName))
-            //            return StatusCode(400, "Username is already taken");
-            //    }
-            //    string userJson = JsonSerializer.Serialize(user);
-            //    System.IO.File.AppendAllText("users.txt", userJson + Environment.NewLine);
-            //    return CreatedAtAction(nameof(Get), new { id = user.userId }, user);
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    return StatusCode(500, "Error writing user to file: " + ex.Message);
-            //}
             User u = userService.Register(user);
             if (u!=null)
             {
@@ -72,40 +49,29 @@ namespace MyShopWebApi.Controllers
         public ActionResult<User> Login([FromBody] User user)
         {
 
-            //if (string.IsNullOrEmpty(user?.password) || string.IsNullOrEmpty(user?.userName))
-            //{
-            //    return StatusCode(400, "username  and password are required");
-            //}
-            //try
-            //{
-            //    if (!System.IO.File.Exists("users.txt"))
-            //    {
-            //        return NotFound("No users found.");
-            //    }
-            //    using (StreamReader reader = System.IO.File.OpenText("users.txt"))
-            //    {
-            //        string? currentUserInFile;
-            //        while ((currentUserInFile = reader.ReadLine()) != null)
-            //        {
-            //            User u = JsonSerializer.Deserialize<User>(currentUserInFile);
-            //            if (u.userName == user.userName && u.password == user.password)
-            //                return Ok(u);
-            //        }
-            //    }
-            //    return Unauthorized("Invalid username or password.");
 
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    return StatusCode(500, "Error writing user to file: " + ex.Message);
-            //}
             User u = userService.Login(user.userName,user.password);
             if (u!=null)
             {
                 return Ok(u);
             }
             return StatusCode(400,"try again");
+
+        }
+
+        [HttpPost("checkPassword")]
+        public ActionResult<int> CheckPassword([FromBody] string password)
+        {
+
+
+            int result = userService.CheckPassword(password);
+        
+            if (result>-1)
+            {
+                
+                return Ok(result);
+            }
+            return StatusCode(400, "try again");
 
         }
 

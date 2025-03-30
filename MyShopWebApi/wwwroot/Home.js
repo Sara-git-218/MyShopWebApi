@@ -9,6 +9,12 @@ Register = async () => {
         alert("username and password are required");
         return;
     }
+    const hardPassword = await CheckPassword();
+    if (hardPassword < 2) {
+        alert("your password is low....")
+        return;
+    }
+   
     const user = {
         userName: userName,
         password: password,
@@ -64,7 +70,7 @@ Login = async () => {
         alert("username and password are required");
         return;
     }
-
+   
     const user = {
         userName: userName,
         password: password,
@@ -144,7 +150,31 @@ const UpDate = async () => {
     }
 
 }
+CheckPassword = async () => {
+    const password = document.getElementById("password").value;
+    try {
+        const responsePost = await fetch("api/Users/checkPassword", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(password)
+        });
+        const result =await responsePost.json()
+        if (responsePost.ok) {
+ 
+            return result;
+        }
+    }
+    catch (e){
 
+    }
+
+}
+const CheckMyPassword = async () => {
+    const result = await CheckPassword();
+    alert(result);
+}
 
 
 
