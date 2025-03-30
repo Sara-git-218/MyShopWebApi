@@ -88,10 +88,10 @@ Login = async () => {
             body: JSON.stringify(user)
         });
         console.log(responsePost);
-        alert(responsePost)
+        //alert(responsePost)
         userDatails = await responsePost.json()
         if (responsePost.ok) {
-            alert("Login successfully");
+            alert(`${userDatails.firstName} loginnnnn`);
             console.log(userDatails);
         }
 
