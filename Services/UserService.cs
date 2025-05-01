@@ -6,7 +6,7 @@ namespace Services
 {
     public class UserService : IUserService
     {
-        private IUserRepository userRepository;
+        private readonly IUserRepository userRepository;
         public UserService(IUserRepository _userRepository)
         {
             userRepository = _userRepository;
