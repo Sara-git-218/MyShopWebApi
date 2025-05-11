@@ -119,7 +119,7 @@ Login = async () => {
         alert("Error: " + e.message);
     }
     
-    localStorage.setItem("UserId", userDatails.userId);
+    localStorage.setItem("UserId", userDatails.id);
 }
 
 
@@ -128,14 +128,16 @@ const UpDate = async () => {
     const lastname = document.getElementById("last_name_u").value;
     const password = document.getElementById("password_u").value;
     const username = document.getElementById("user_name_u").value;
-    const user = {
-        userName: username,
-        password: password,
-        firstName: firstname,
-        lastName: lastname
-    }
+  
     const id = localStorage.getItem("UserId")
     alert(id)
+    const user = {
+        UserName: username,
+        Password: password,
+        FirstName: firstname,
+        LastName: lastname,
+        Id: id
+    }
     const responsePost = await fetch(`api/Users/${id}`, {
         method: 'Put',
         headers: {

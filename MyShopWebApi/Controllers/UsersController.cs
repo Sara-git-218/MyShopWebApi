@@ -10,10 +10,10 @@ namespace MyShopWebApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserService userService;
-        public UsersController(IUserService _userService)
+        private readonly IUserService _userService;
+        public UsersController(IUserService userService)
         {
-            userService= _userService;
+            _userService= userService;
         }
       
         // GET: api/<UsersController>
@@ -37,25 +37,26 @@ namespace MyShopWebApi.Controllers
         }
 
         [HttpPost("register")]
-        public ActionResult<User> Register([FromBody] User user)
+        public  async Task<ActionResult<User>> Register([FromBody] User user)
         {
 
-            User u = userService.Register(user);
+            User u = await _userService.Register(user);
             if (u!=null)
             {
                 return Ok(u);
             }
             return StatusCode(400,"try Again");
+          
 
 
         }
 
         [HttpPost("login")]
-        public ActionResult<User> Login([FromBody] User user)
+        public async  Task<ActionResult<User>> Login([FromBody] User user)
         {
 
 
-            User u = userService.Login(user.userName,user.password);
+            User u =  await _userService.Login(user.UserName,user.Password);
             if (u!=null)
             {
                 return Ok(u);
@@ -69,7 +70,7 @@ namespace MyShopWebApi.Controllers
         {
 
 
-            int result = userService.CheckPassword(password);
+            int result = _userService.CheckPassword(password);
         
             if (result>-1)
             {
@@ -82,51 +83,10 @@ namespace MyShopWebApi.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]User u)
+        public async void Put(int id, [FromBody]User u)
         {
-            //User newUser=new User();
-
-            //if(u.firstName!=null)
-            //{
-            //    newUser.firstName = u.firstName;
-            //}
-            //if (u.lastName != null)
-            //{
-            //    newUser.lastName = u.lastName;
-            //}
-            //if (u.password != null)
-            //{
-            //    newUser.password = u.password;
-            //}
-            //if (u.userName != null)
-            //{
-            //    newUser.userName = u.userName;
-            //}
-            //newUser.userId = id;
-            //string filePath = Path.Combine(Directory.GetCurrentDirectory(), "users.txt");
-
-
-            //string textToReplace = string.Empty;
-            //using (StreamReader reader = System.IO.File.OpenText(filePath))
-            //{
-            //    string currentUserInFile;
-            //    while ((currentUserInFile = reader.ReadLine()) != null)
-            //    {
-
-            //        User user = JsonSerializer.Deserialize<User>(currentUserInFile);
-            //        if (user.userId == id)
-            //            textToReplace = currentUserInFile;
-            //    }
-            //}
-
-            //if (textToReplace != string.Empty)
-            //{
-            //    string text = System.IO.File.ReadAllText(filePath);
-            //    text = text.Replace(textToReplace, JsonSerializer.Serialize(newUser));
-            //    System.IO.File.WriteAllText(filePath, text);
-            //}
-
-            userService.UpDate(u,id);
+         
+           await  _userService.UpDate(u,id);
 
         }
 
