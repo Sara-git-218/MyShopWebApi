@@ -32,4 +32,7 @@ public partial class User
     [Column("LASTNAME")]
     [StringLength(50)]
     public string LastName { get; set; }
+
+    [InverseProperty("User")]
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

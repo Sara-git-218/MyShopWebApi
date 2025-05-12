@@ -1,9 +1,9 @@
 ﻿{
-   "CodeGenerationMode": 4,
+   "CodeGenerationMode": 5,
    "ContextClassName": "326059268_ShopApiContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
-   "IncludeConnectionString": true,
+   "IncludeConnectionString": false,
    "ModelNamespace": null,
    "OutputContextPath": null,
    "OutputPath": "",
@@ -14,6 +14,22 @@
    "SelectedToBeGenerated": 0,
    "T4TemplatePath": null,
    "Tables": [
+      {
+         "Name": "[dbo].[Catgories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ORDERITEM]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ORDERS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Products]",
+         "ObjectType": 0
+      },
       {
          "Name": "[dbo].[User]",
          "ObjectType": 0
