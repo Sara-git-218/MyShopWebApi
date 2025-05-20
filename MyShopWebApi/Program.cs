@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -20,6 +20,9 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 //builder.Services.AddOpenApi();
 builder.Services.AddDbContext<_326059268_ShopApiContext>(options =>
     options.UseSqlServer("Data Source=SRV2\\PUPILS;Initial Catalog=326059268_ShopApi;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True"));
+//builder.Services.AddControllers();
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +30,15 @@ var app = builder.Build();
 //{
 //    app.MapOpenApi();
 //}
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "My API V1");
+    });
+}
+
 
 app.UseHttpsRedirection();
 

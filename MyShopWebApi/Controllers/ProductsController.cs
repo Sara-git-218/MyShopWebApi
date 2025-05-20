@@ -13,7 +13,7 @@ namespace MyShopWebApi.Controllers
         private readonly IProductService _productService;
         public ProductsController(IProductService productService)
         {
-            _productService = _productService;
+            _productService = productService;
         }
         // GET: api/<ProductsController>
         [HttpGet]
