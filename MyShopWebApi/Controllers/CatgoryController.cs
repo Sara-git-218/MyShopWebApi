@@ -27,28 +27,28 @@ namespace MyShopWebApi.Controllers
         }
 
         // GET api/<CatgoryController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST api/<CatgoryController>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
         // PUT api/<CatgoryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
         // DELETE api/<CatgoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
