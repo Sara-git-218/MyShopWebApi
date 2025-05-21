@@ -21,8 +21,9 @@ namespace Repositories
         }
         public async Task<User> Register(User user)
         {
-       
-           await DBcontext.Users.AddAsync(user);
+            if (user == null)
+                throw new ArgumentNullException(nameof(user), "User cannot be null.");
+            await DBcontext.Users.AddAsync(user);
             await DBcontext.SaveChangesAsync();
             return await Task.FromResult(user);
          
@@ -36,7 +37,8 @@ namespace Repositories
         }
         public async Task<User> UpDate(User user, int id)
         {
-
+            if (user == null)
+                throw new ArgumentNullException(nameof(user), "User cannot be null.");
             DBcontext.Users.Update(user);
             await DBcontext.SaveChangesAsync();
             return await Task.FromResult(user);

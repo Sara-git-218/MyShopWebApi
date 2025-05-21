@@ -16,8 +16,8 @@ namespace Repositories
         }
         public async Task<List<Product>> GetProducts()
         {
-            //return await DBcontext.Products.Include(c=>c.Catgory).ToListAsync();
-            return await DBcontext.Products.ToListAsync();
+            return await DBcontext.Products.Include(c=>c.Catgory).ToListAsync();
+            //return await DBcontext.Products.ToListAsync();
         }
     }
 }

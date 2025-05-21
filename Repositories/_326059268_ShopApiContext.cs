@@ -8,6 +8,10 @@ namespace Repositories;
 
 public partial class _326059268_ShopApiContext : DbContext
 {
+    public _326059268_ShopApiContext()
+    {
+        
+    }
     public _326059268_ShopApiContext(DbContextOptions<_326059268_ShopApiContext> options)
         : base(options)
     {

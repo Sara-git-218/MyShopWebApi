@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Entities;
@@ -30,6 +31,7 @@ public partial class Product
 
     [ForeignKey("CatgoryId")]
     [InverseProperty("Products")]
+    [JsonIgnore]
     public virtual Catgory Catgory { get; set; }
 
     [InverseProperty("Product")]
