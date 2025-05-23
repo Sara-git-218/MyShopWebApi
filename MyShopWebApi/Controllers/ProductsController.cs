@@ -21,9 +21,14 @@ namespace MyShopWebApi.Controllers
         //{
         //    return new string[] { "value1", "value2" };
         //}
-        public async Task<List<Product>> Get()
+        public async Task<List<Product>> Get(
+                [FromQuery] string? desc,
+                [FromQuery] int? minPrice,
+                [FromQuery] int? maxPrice,
+                [FromQuery] int?[] categoryIds)
         {
-            return await _productService.GetProducts();
+
+            return await _productService.GetProducts(desc,  minPrice,  maxPrice,  categoryIds);
         }
 
         // GET api/<ProductsController>/5
