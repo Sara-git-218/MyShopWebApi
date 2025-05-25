@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DTO;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -17,18 +18,15 @@ namespace MyShopWebApi.Controllers
         }
         // GET: api/<ProductsController>
         [HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-        public async Task<List<Product>> Get(
+      
+        public async Task<List<ProductDTO>> Get(
                 [FromQuery] string? desc,
                 [FromQuery] int? minPrice,
                 [FromQuery] int? maxPrice,
                 [FromQuery] int?[] categoryIds)
         {
 
-            return await _productService.GetProducts(desc,  minPrice,  maxPrice,  categoryIds);
+            return await _productService.GetProducts(desc, minPrice, maxPrice, categoryIds);
         }
 
         // GET api/<ProductsController>/5
@@ -38,22 +36,6 @@ namespace MyShopWebApi.Controllers
             return "value";
         }
 
-        // POST api/<ProductsController>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<ProductsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<ProductsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      
     }
 }

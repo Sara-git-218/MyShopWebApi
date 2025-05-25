@@ -31,7 +31,7 @@ public partial class Product
 
     [ForeignKey("CatgoryId")]
     [InverseProperty("Products")]
-    [JsonIgnore]
+    //[JsonIgnore]
     public virtual Catgory Catgory { get; set; }
 
     [InverseProperty("Product")]
