@@ -1,5 +1,6 @@
 ﻿
 
+using DTO;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
@@ -28,10 +29,10 @@ namespace Repositories
             return await Task.FromResult(user);
          
         }
-        public async  Task<User> Login(string userName)//(User user)
+        public async  Task<User> Login(UserLoginDTO userToLog)//(User user)
         {
            
-            User userLog =await DBcontext.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+            User userLog =await DBcontext.Users.FirstOrDefaultAsync(u => u.UserName == userToLog.UserName);
             return await Task.FromResult(userLog);
           
         }
