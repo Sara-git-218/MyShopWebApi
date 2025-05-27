@@ -16,8 +16,8 @@ public class DatabaseFixture : IDisposable
 
         public DatabaseFixture()
         {
-            //string connectionString = "Server=(localdb)\\mssqllocaldb;Database=TestDb;Trusted_Connection=True;";
-            string connectionString = "Server=SRV2\\PUPILS;Database=326059268_TestDb;Trusted_Connection=True;;Integrated Security=True;TrustServerCertificate=True";
+            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=TestDb;Trusted_Connection=True;";
+            //string connectionString = "Server=SRV2\\PUPILS;Database=326059268_TestDb;Trusted_Connection=True;;Integrated Security=True;TrustServerCertificate=True";
             //optionsBuilder.UseSqlServer(connectionString);
             var options = new DbContextOptionsBuilder<_326059268_ShopApiContext>()
                 .UseSqlServer(connectionString) // אפשר לשנות ל־UseSqlite לפי צורך

@@ -19,7 +19,7 @@ namespace TestProject
             _userRepository = new UserRepository(_dbContext);
         }
         [Fact]
-        public async Task GetUsers_Should_Return_All_Users()
+        public async Task GetCategories_Should_Return_All_Categoriess()
         {
             // Arrange
             _dbContext.Users.RemoveRange(_dbContext.Users);
