@@ -1,26 +1,4 @@
-﻿//using Entities;
-//using Moq;
-//using Moq.EntityFrameworkCore;
-//using Repositories;
-//namespace TestProject
-//{
-//    public class UnitTest1
-//    {
-//        [Fact]
-//        public async void DoubleUserTest()
-//        {
-//            var user = new User { FirstName = "sara", LastName = "heinemann", UserName = "sss", Password = "sara218!74" };
-//            var mockDBcontext = new Mock<_326059268_ShopApiContext>();
-//            var users= new List<User>() { user };
-//            mockDBcontext.Setup(x=>x.Users).ReturnsDbSet(users);
-//            var userRepository= new UserRepository(mockDBcontext.Object);
-//            var result = await userRepository.Login(user.UserName);
-//            Assert.Equal(user.UserName,result.UserName);
-
-
-//        }
-//    }
-//}
+﻿
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
