@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="Home.js"></script>
+    <title>ברוך הבא</title>
+</head>
+<body onload="loadWelcomePage()">
+
+    <h2 id="greeting"></h2>
+
+    <div>update user details</div>
+    <div id="update">
+        <br /><br />
+        <label for="user_name">user name</label>
+        <input type="text" id="user_name_u" /><br /><br />
+        <label for="password">password</label>
+        <input type="password" id="password_u" /><br /><br />
+        <label for="first_name">first name</label>
+        <input type="text" id="first_name_u" /><br /><br />
+        <label for="last_name">last name</label>
+        <input type="text" id="last_name_u" /><br /><br />
+
+        <button onclick="UpDate()"> UpDate </button>
+    </div>
+
+    <script>
+        function loadWelcomePage() {
+            const firstName = localStorage.getItem("FirstName")?.trim();
+            const userName = localStorage.getItem("UserName")?.trim();
+
+            document.getElementById("greeting").innerText = `hellow ${firstName}!`;
+            document.getElementById("user_name_u").value = userName;
+        }
+    </script>
+
+</body>
+</html>

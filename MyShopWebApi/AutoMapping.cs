@@ -13,6 +13,8 @@ namespace MyShopWebApi
             CreateMap<User,UserDTO>().ReverseMap();
             CreateMap<Order, OrderDTO>().ReverseMap();
             CreateMap<Orderitem, OrderItemDTO>().ReverseMap();
+            CreateMap<UserRegisterDTO,User>().ReverseMap();
+            CreateMap<UserDTO, User>().ReverseMap();
         }
     }
 }

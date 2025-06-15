@@ -29,10 +29,10 @@ namespace Repositories
             return await Task.FromResult(user);
          
         }
-        public async  Task<User> Login(UserLoginDTO userToLog)//(User user)
+        public async  Task<User> Login(string UserName)//(User user)
         {
            
-            User userLog =await DBcontext.Users.FirstOrDefaultAsync(u => u.UserName == userToLog.UserName);
+            User userLog =await DBcontext.Users.FirstOrDefaultAsync(u => u.UserName == UserName);
             return await Task.FromResult(userLog);
           
         }

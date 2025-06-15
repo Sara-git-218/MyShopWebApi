@@ -74,8 +74,7 @@ Login = async () => {
     const user = {
         userName: userName,
         password: password,
-        firstName: "",
-        lastName: ""
+       
 
     }
     try {
@@ -89,10 +88,18 @@ Login = async () => {
         });
         console.log(responsePost);
         //alert(responsePost)
-        userDatails = await responsePost.json()
+       const userDatails = await responsePost.json()
         if (responsePost.ok) {
             alert(`${userDatails.firstName} loginnnnn`);
             console.log(userDatails);
+            localStorage.setItem("UserId", userDatails.id);
+            localStorage.setItem("UserName", userDatails.userName.trim());
+            localStorage.setItem("FirstName", userDatails.firstName.trim());
+            localStorage.setItem("LastName", userDatails.lastName.trim());
+            console.log("Redirecting to welcome.html...");
+
+            window.location.href = "welcome.html";
+            
         }
 
         else {
@@ -119,7 +126,7 @@ Login = async () => {
         alert("Error: " + e.message);
     }
     
-    localStorage.setItem("UserId", userDatails.id);
+    
 }
 
 
