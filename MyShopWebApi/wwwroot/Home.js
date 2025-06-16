@@ -157,6 +157,9 @@ const UpDate = async () => {
     if (responsePost.ok) {
         alert("updated")
     }
+    else {
+        alert("error")
+    }
 
 }
 CheckPassword = async () => {

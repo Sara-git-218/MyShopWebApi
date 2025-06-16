@@ -52,10 +52,9 @@ namespace Services
             {
                 return null;
             }
-            List<User> users = await _userRepository.GetUsers();
-
-            User userfound = users.FirstOrDefault(u => u.UserName.Trim() == user.UserName);
-            if (userfound == null)
+          
+            User userfound = await _userRepository.GetByUserName(user.UserName);
+            if (userfound == null||userfound.UserName==user.UserName)
             {
                 User newuser = await _userRepository.UpDate(user,id);
                 return _mapper.Map<UserDTO>(newuser);

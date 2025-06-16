@@ -45,7 +45,13 @@ namespace Repositories
             return await Task.FromResult(user);
           
         }
-        
+        public async Task<User?> GetByUserName(string userName)
+        {
+            return await DBcontext.Users
+                .FirstOrDefaultAsync(u => u.UserName.Trim() == userName.Trim());
+        }
+
+
 
 
     }

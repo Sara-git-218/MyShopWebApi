@@ -14,7 +14,14 @@ namespace MyShopWebApi
             CreateMap<Order, OrderDTO>().ReverseMap();
             CreateMap<Orderitem, OrderItemDTO>().ReverseMap();
             CreateMap<UserRegisterDTO,User>().ReverseMap();
-            CreateMap<UserDTO, User>().ReverseMap();
+            //CreateMap<UserDTO, User>().ReverseMap();
+            CreateMap<User, UserDTO>()
+    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+    .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName.Trim()))
+    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName.Trim()))
+    .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName.Trim()));
+
+
         }
     }
 }

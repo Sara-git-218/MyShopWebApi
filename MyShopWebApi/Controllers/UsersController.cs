@@ -84,12 +84,21 @@ namespace MyShopWebApi.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public async void Put(int id, [FromBody]User u)
-        {
-         
-           await  _userService.UpDate(u,id);
+        //public async void Put(int id, [FromBody]User u)
+        //{
 
+        //   await  _userService.UpDate(u,id);
+
+        //}
+        public async Task<IActionResult> Put(int id, [FromBody] User u)
+        {
+            var result = await _userService.UpDate(u, id);
+            if (result != null)
+                return Ok(result);
+
+            return BadRequest("Could not update user");
         }
+
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
