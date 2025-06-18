@@ -90,7 +90,6 @@ Login = async () => {
         //alert(responsePost)
        const userDatails = await responsePost.json()
         if (responsePost.ok) {
-            alert(`${userDatails.firstName} loginnnnn`);
             console.log(userDatails);
             localStorage.setItem("UserId", userDatails.id);
             localStorage.setItem("UserName", userDatails.userName.trim());

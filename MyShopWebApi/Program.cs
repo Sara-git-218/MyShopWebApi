@@ -4,11 +4,18 @@ using Repositories;
 using Services;
 using DTO;
 using Microsoft.AspNetCore.Builder;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.File("mylog.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
+// שימוש בלוגר הזה במקום ברירת המחדל
+builder.Host.UseSerilog();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
