@@ -5,17 +5,18 @@ using Services;
 using DTO;
 using Microsoft.AspNetCore.Builder;
 using Serilog;
+using NLog.Web;
 
+var logger = NLogBuilder.ConfigureNLog(".nlog.config").GetCurrentClassLogger();
 var builder = WebApplication.CreateBuilder(args);
+//logger.Info("app start");
 
-// Add services to the container.
-Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Information()
-    .WriteTo.File("mylog.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
+//Log.Logger = new LoggerConfiguration()
+//    .MinimumLevel.Information()
+//    .WriteTo.File("mylog.txt", rollingInterval: RollingInterval.Day)
+//    .CreateLogger();
 
-// שימוש בלוגר הזה במקום ברירת המחדל
-builder.Host.UseSerilog();
+builder.Host.UseNLog();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
