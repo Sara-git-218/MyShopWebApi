@@ -9,12 +9,6 @@ using NLog.Web;
 
 var logger = NLogBuilder.ConfigureNLog(".nlog.config").GetCurrentClassLogger();
 var builder = WebApplication.CreateBuilder(args);
-//logger.Info("app start");
-
-//Log.Logger = new LoggerConfiguration()
-//    .MinimumLevel.Information()
-//    .WriteTo.File("mylog.txt", rollingInterval: RollingInterval.Day)
-//    .CreateLogger();
 
 builder.Host.UseNLog();
 
@@ -33,7 +27,7 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 //    options.UseSqlServer("Data Source=SRV2\\PUPILS;Initial Catalog=326059268_ShopApi;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True"));
 builder.Services.AddDbContext<_326059268_ShopApiContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-//builder.Services.AddControllers();
+
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
