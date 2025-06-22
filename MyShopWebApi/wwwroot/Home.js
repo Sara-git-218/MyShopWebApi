@@ -5,6 +5,7 @@ Register = async () => {
     const password = document.getElementById("password").value;
     const firstName = document.getElementById("first_name").value;
     const lastName = document.getElementById("last_name").value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!userName || !password) {
         alert("username and password are required");
         return;
@@ -12,6 +13,10 @@ Register = async () => {
     const hardPassword = await CheckPassword();
     if (hardPassword < 2) {
         alert("your password is low....")
+        return;
+    }
+    if (!emailRegex.test(userName)) {
+        alert("Invalid email address format");
         return;
     }
    
