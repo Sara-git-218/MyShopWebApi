@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using Services;
 using DTO;
+//delete unused code and comments
+//change function names to be more descriptive
+
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MyShopWebApi.Controllers
@@ -15,32 +18,32 @@ namespace MyShopWebApi.Controllers
         private readonly ILogger<UsersController> _logger;
         public UsersController(IUserService userService, ILogger<UsersController> logger)
         {
-            _userService= userService;
-            _logger= logger;
+            _userService = userService;
+            _logger = logger;
         }
-      
+
         // GET: api/<UsersController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<string> Get()//
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string Get(int id)//
         {
             return "value";
         }
 
         // POST api/<UsersController>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody] string value)//
         {
         }
 
         [HttpPost("register")]
-        public  async Task<ActionResult<UserDTO>> Register([FromBody] UserRegisterDTO user)
+        public async Task<ActionResult<UserDTO>> Register([FromBody] UserRegisterDTO user)
         {
 
             UserDTO newusewr = await _userService.Register(user);
@@ -48,24 +51,22 @@ namespace MyShopWebApi.Controllers
             {
                 return Ok(newusewr);
             }
-            return StatusCode(400,"try Again");
-          
-
-
+            return StatusCode(400, "try Again");
+            //newusewr!= null ? return Ok(newusewr) : return StatusCode(400, "try Again");
         }
 
         [HttpPost("login")]
-        public async  Task<ActionResult<UserDTO>> Login([FromBody] UserLoginDTO user)
+        public async Task<ActionResult<UserDTO>> Login([FromBody] UserLoginDTO user)
         {
 
 
-            UserDTO u =  await _userService.Login(user);
-            if (u!=null)
+            UserDTO u = await _userService.Login(user);//loginUser - name with same meaning
+            if (u != null)
             {
                 _logger.LogInformation("user " + u.UserName + "logged in successfully at " + DateTime.UtcNow);
                 return Ok(u);
             }
-            return StatusCode(400,"try again");
+            return StatusCode(400, "try again");
 
         }
 
@@ -75,14 +76,14 @@ namespace MyShopWebApi.Controllers
 
 
             int result = _userService.CheckPassword(password);
-        
-            if (result>-1)
+
+            if (result > -1)
             {
-                
+
                 return Ok(result);
             }
             return StatusCode(400, "try again");
-
+        //result > -1 ? .......
         }
 
         // PUT api/<UsersController>/5
@@ -100,12 +101,13 @@ namespace MyShopWebApi.Controllers
                 return Ok(result);
 
             return BadRequest("Could not update user");
+            //result != null ? .........
         }
 
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(int id)///
         {
         }
     }

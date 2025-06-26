@@ -9,7 +9,7 @@ namespace Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        _326059268_ShopApiContext DBcontext;
+        _326059268_ShopApiContext DBcontext;//_dbContext
         public ProductRepository(_326059268_ShopApiContext DBcontext)
         {
             this.DBcontext = DBcontext;
@@ -26,8 +26,8 @@ namespace Repositories
             && ((categoryIds.Length == 0) ? (true) : (categoryIds.Contains(product.CatgoryId)))).OrderBy(product => product.Price);
 
             return await query.ToListAsync();
-            //return await DBcontext.Products.Include(c=>c.Catgory).ToListAsync();
-            //return await DBcontext.Products.ToListAsync();
+            //return await DBcontext.Products.Include(c=>c.Catgory).ToListAsync();//
+            //return await DBcontext.Products.ToListAsync();//
         }
     }
 }

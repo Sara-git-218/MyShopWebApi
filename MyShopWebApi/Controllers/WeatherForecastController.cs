@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyShopWebApi.Controllers;
-
+//delete page
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase

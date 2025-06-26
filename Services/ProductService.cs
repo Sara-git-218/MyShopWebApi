@@ -24,7 +24,7 @@ namespace Services
         public async Task<List<ProductDTO>> GetProducts(string? desc, int? minPrice, int? maxPrice, int?[] categoryIds)
         {
            var products= await _productRepository.GetProducts(desc,  minPrice, maxPrice, categoryIds);
-            //return products.Select(x=>_mapper.Map<ProductDTO>(x)).ToList();
+            //return products.Select(x=>_mapper.Map<ProductDTO>(x)).ToList();//
             return _mapper.Map<List<ProductDTO>>(products);
         }
     }
