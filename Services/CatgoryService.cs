@@ -21,7 +21,7 @@ namespace Services
         public async Task<List<CategoryDTO>> GetCatgories()
         {
            var categories= await _categoryRepository.GetCatgories();
-           return categories.Select(x=>_mapper.Map<CategoryDTO>(x)).ToList();
+           return _mapper.Map<List<CategoryDTO>>(categories);
         }
     }
 }

@@ -20,9 +20,9 @@ namespace Services
         }
         public async Task<OrderDTO> CreateOrder(OrderDTO order)
         {
-            var order1=_mapper.Map<Order>(order);
-            //order1.Orderitems = order.Orderitems.Select(x => _mapper.Map<Orderitem>(x)).ToList();
-            var o= await _orderRepository.CreateOrder(order1);
+            var order1=_mapper.Map<Order>(order);//meaningful name
+            //order1.Orderitems = order.Orderitems.Select(x => _mapper.Map<Orderitem>(x)).ToList();//
+            var o= await _orderRepository.CreateOrder(order1);//meaningful name
             return _mapper.Map<OrderDTO>(o);
         }
     }

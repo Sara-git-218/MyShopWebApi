@@ -2,6 +2,8 @@
 using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services;
+//delete unused code and comments
+//change function names to be more descriptive
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,7 +20,7 @@ namespace MyShopWebApi.Controllers
         }
         // GET: api/<ProductsController>
         [HttpGet]
-      
+
         public async Task<List<ProductDTO>> Get(
                 [FromQuery] string? desc,
                 [FromQuery] int? minPrice,
@@ -31,11 +33,11 @@ namespace MyShopWebApi.Controllers
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string Get(int id)//
         {
             return "value";
         }
 
-      
+
     }
 }

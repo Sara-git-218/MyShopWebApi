@@ -1,4 +1,5 @@
-﻿//using Entities;
+﻿//uncomment and maintain the tests.
+//using Entities;
 //using Moq;
 //using Moq.EntityFrameworkCore;
 //using Repositories;

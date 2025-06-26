@@ -9,7 +9,7 @@ namespace Repositories
 {
    public class OrderRepository : IOrderRepository
     {
-        _326059268_ShopApiContext DBcontext;
+        _326059268_ShopApiContext DBcontext;//_dbContext
         public OrderRepository(_326059268_ShopApiContext DBcontext)
         {
             this.DBcontext = DBcontext;
@@ -19,7 +19,7 @@ namespace Repositories
 
             await DBcontext.Orders.AddAsync(order);
             await DBcontext.SaveChangesAsync();
-            return await Task.FromResult(order);
+            return await Task.FromResult(order);//return order;
 
         }
     }
